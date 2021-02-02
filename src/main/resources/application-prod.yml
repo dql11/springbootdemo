@@ -1,0 +1,8 @@
+application:
+  name: prod
+  version: prod环境
+developer:
+  name: prod
+  website: qqq.11.com
+  qq: 22222.qq.com
+  phone-number: 134433333

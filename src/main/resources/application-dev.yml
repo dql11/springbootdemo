@@ -1,0 +1,8 @@
+application:
+  name: dev
+  version: dev环境
+developer:
+  name: dev
+  website: qqq.com
+  qq: 2222.qq.com
+  phone-number: 13333333

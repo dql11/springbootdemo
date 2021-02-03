@@ -1,5 +1,28 @@
 server:
   port: 9999
+  servlet:
+    context-path: /demo
 spring:
   profiles:
     active: dev
+
+#  security:
+#    user:
+#      name: dql
+#      password: 123456
+
+management:
+
+  server:
+    port: 8090
+    servlet:
+      context-path: /sys
+  #端点健康情况，默认never
+  endpoint:
+    health:
+      show-details: always
+
+  endpoints:
+    web:
+      exposure:
+        include: '*'

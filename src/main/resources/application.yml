@@ -6,10 +6,39 @@ spring:
   profiles:
     active: dev
 
+  datasource:
+    druid:
+      url: jdbc:mysql://119.45.222.11:3306/dql?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+  ureport:
+    debug: false
+    disableFileProvider: false
+    disableHttpSessionReportCache: true
+    # 单机模式，本地路径需要提前创建
+    fileStoreDir: '/Users/yk.shen/Desktop/ureport2'
+
+
+
+
+  freemarker:
+    suffix: .ftl
+    cache: false
+    charset: UTF-8
+#  thymeleaf:
+#    mode: HTML
+#    encoding: UTF-8
+#    servlet:
+#      content-type: text/html
+#    cache: false
+
 #  security:
 #    user:
 #      name: dql
 #      password: 123456
+
+
 
 management:
 
@@ -17,7 +46,7 @@ management:
     port: 8090
     servlet:
       context-path: /sys
-  #�˵㽡�������Ĭ��never
+  #�˵㽡�������Ĭ��never
   endpoint:
     health:
       show-details: always

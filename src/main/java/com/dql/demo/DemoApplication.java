@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @RestController
 @Slf4j
-public class DemoApplication {
+public class DemoApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         final ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
@@ -37,6 +39,11 @@ public class DemoApplication {
            who="world";
        }
        return StrUtil.format("hello,{}",who);
+    }
+
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(DemoApplication.class);
     }
 
 }

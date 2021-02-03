@@ -9,7 +9,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 
 @Component
-public class  implements BuildinDatasource {
+public class InnerDatasource  implements BuildinDatasource {
     @Autowired
     private DataSource datasource;
 

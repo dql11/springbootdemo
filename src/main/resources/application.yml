@@ -6,6 +6,13 @@ spring:
   profiles:
     active: dev
 
+  data:
+    mongodb:
+      host: 119.45.222.11
+      port: 27017
+      database: article_db
+
+
   datasource:
     url: jdbc:mysql://119.45.222.11:3306/dql?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
     username: root
@@ -28,6 +35,35 @@ spring:
       max-lifetime: 60000
       connection-timeout: 30000
 
+  session:
+    store-type: redis
+    redis:
+      flush-mode: immediate
+      namespace: "spring:session"
+
+  redis:
+    host: localhost
+    # 连接超时时间（记得添加单位，Duration）
+    timeout: 10000ms
+    # Redis默认情况下有16个分片，这里配置具体使用的分片
+    # database: 0
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制） 默认 8
+        max-active: 8
+        # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
+        max-wait: -1ms
+        # 连接池中的最大空闲连接 默认 8
+        max-idle: 8
+        # 连接池中的最小空闲连接 默认 0
+        min-idle: 0
+    cache:
+      # 一般来说是不用配置的，Spring Cache 会根据依赖的包自行装配
+      type: redis
+  logging:
+    level:
+      com.xkcoding: debug
+
 #  datasource:
 #    druid:
 #      url: jdbc:mysql://119.45.222.11:3306/dql?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
@@ -44,16 +80,16 @@ spring:
 
 
 
-  freemarker:
-    suffix: .ftl
-    cache: false
-    charset: UTF-8
-#  thymeleaf:
-#    mode: HTML
-#    encoding: UTF-8
-#    servlet:
-#      content-type: text/html
+#  freemarker:
+#    suffix: .ftl
 #    cache: false
+#    charset: UTF-8
+  thymeleaf:
+    mode: HTML
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
 
 #  security:
 #    user:
@@ -68,7 +104,6 @@ management:
     port: 8090
     servlet:
       context-path: /sys
-  #�˵㽡�������Ĭ��never
   endpoint:
     health:
       show-details: always
@@ -85,7 +120,7 @@ logging:
 mybatis-plus:
   mapper-locations: classpath:mappers/*.xml
   #实体扫描，多个package用逗号或者分号分隔
-  typeAliasesPackage: com.xkcoding.orm.mybatis.plus.entity
+  typeAliasesPackage: com.dql.demo.mybatisplus
   global-config:
     # 数据库相关配置
     db-config:

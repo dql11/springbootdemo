@@ -11,9 +11,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
-@RequestMapping("user")
-@Slf4j
+//@Controller
+//@RequestMapping("user")
+//@Slf4j
 public class UserController {
 
     @PostMapping("/login")
